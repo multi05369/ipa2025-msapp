@@ -1,7 +1,8 @@
 import pika
 
-def produce(host, body):
-    connection = pika.BlockingConnection(pika.ConnectionParameters(host))
+def produce(host, user, passwd, body):
+    credentials = pika.PlainCredentials(user, passwd)
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host=host, credentials=credentials))
     channel = connection.channel()
 
     channel.exchange_declare(exchange="jobs", exchange_type="direct")
@@ -13,4 +14,4 @@ def produce(host, body):
     connection.close()
 
 if __name__ == "__main__":
-    produce("localhost", "192.168.1.44")
+    produce("rabbitmq", "user", "pass", "192.168.1.44")

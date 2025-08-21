@@ -1,13 +1,15 @@
 FROM python
 
+WORKDIR /home/myapp
+
 COPY ./requirements.txt /home/myapp/
 
 RUN pip install -r /home/myapp/requirements.txt
 
-COPY ./database.py /home/myapp/
+COPY ./database.py .
 
-COPY ./producer.py /home/myapp/
+COPY ./producer.py .
 
-COPY ./scheduler.py /home/myapp/
+COPY ./scheduler.py .
 
-CMD python3 /home/myapp/scheduler.py
+CMD ["python3", "scheduler.py"]
