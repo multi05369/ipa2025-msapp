@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Router Detail</title>
+    <link rel="stylesheet" href="/static/style.css" />
+
+</head>
+<body>
+    <h2>Router: {{ ip_address }}</h2>
+    <table>
+        <tr>
+            <th>Timestamp</th>
+            <th>Interface</th>
+            <th>IP Address</th>
+            <th>Status</th>
+            <th>Protocol</th>
+        </tr>
+        {% for doc in interface_status %}
+            {% for iface in doc.output %}
+            <tr>
+                <td>{{ doc.time }}</td>
+                <td>{{ iface.interface }}</td>
+                <td>{{ iface.ip_address }}</td>
+                <td>{{ iface.status }}</td>
+                <td>{{ iface.proto }}</td>
+            </tr>
+            {% endfor %}
+        {% endfor %}
+    </table>
+</body>
+</html>
