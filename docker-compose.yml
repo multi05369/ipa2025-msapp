@@ -11,7 +11,7 @@ services:
       - .env
     environment:
       MONGO_URI: "mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@mongo:27017/"
-      DB_NAME: "ipa2025"
+      DB_NAME: "${DB_NAME}"
 
   mongo:
     image: mongo:6
@@ -54,7 +54,24 @@ services:
       RABBITMQ_USER: ${RABBITMQ_USER}
       RABBITMQ_PASS: ${RABBITMQ_PASSWORD}
       MONGO_URI: "mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@mongo:27017/"
-      DB_NAME: "ipa2025"
+      DB_NAME: "${DB_NAME}"
+
+  worker:
+    build: ./worker
+    networks:
+      - app-net
+    depends_on:
+      - mongo
+      - rabbitmq
+    env_file:
+      - .env
+    environment:
+      PYTHONUNBUFFERED: 1
+      RABBITMQ_HOST: "rabbitmq"
+      RABBITMQ_USER: ${RABBITMQ_USER}
+      RABBITMQ_PASS: ${RABBITMQ_PASSWORD}
+      MONGO_URI: "mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@mongo:27017/"
+      DB_NAME: "${DB_NAME}"
 
 volumes:
   mongo-data:

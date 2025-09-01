@@ -1,10 +1,10 @@
 FROM python
 
-WORKDIR /home/myapp
+WORKDIR /home/scheduler
 
-COPY ./requirements.txt /home/myapp/
+COPY ./requirements.txt /home/scheduler/
 
-RUN pip install -r /home/myapp/requirements.txt
+RUN pip install -r /home/scheduler/requirements.txt
 
 COPY ./database.py .
 
