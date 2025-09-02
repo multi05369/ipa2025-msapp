@@ -38,7 +38,7 @@ def router_detail(ip_address):
         db["interface_status"]
         .find({"ip_address": ip_address})
         .sort("time", -1)
-        .limit(3)
+        .limit(5)
     )
     return render_template(
         "router_detail.html",
