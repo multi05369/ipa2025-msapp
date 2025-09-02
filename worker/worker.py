@@ -47,7 +47,7 @@ def main():
         exit(1)
     channel = connection.channel()
     channel.queue_declare(queue='router_jobs')
-
+    channel.basic_qos(prefetch_count=1)
     channel.basic_consume(queue='router_jobs', on_message_callback=callback, auto_ack=True)
     print("Waiting for messages...")
     channel.start_consuming()
