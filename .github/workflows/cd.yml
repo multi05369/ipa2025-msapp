@@ -32,7 +32,7 @@ jobs:
             echo "RABBITMQ_DEFAULT_USER=${{ secrets.RABBITMQ_DEFAULT_USER }}"
             echo "RABBITMQ_DEFAULT_PASS=${{ secrets.RABBITMQ_DEFAULT_PASS }}"
             echo "RABBITMQ_USER=${{ secrets.RABBITMQ_USER }}"
-            echo "RABBITMQ_PASS=${{ secrets.RABBITMQ_PASS }}"
+            echo "RABBITMQ_PASSWORD=${{ secrets.RABBITMQ_PASS }}"
             echo "DB_NAME=${{ secrets.DB_NAME }}"
           } > .env
           chmod 600 .env
