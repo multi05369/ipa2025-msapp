@@ -26,23 +26,25 @@ def add_router():
     password = request.form.get("password")
 
     if ip_address and username and password:
-        routers.insert_one({
-            "ip_address": ip_address,
-            "username": username,
-            "password": password
-        })
+        routers.insert_one(
+            {"ip_address": ip_address, "username": username, "password": password}
+        )
     return redirect("/")
 
 
 @app.route("/router/<ip_address>", methods=["GET"])
 def router_detail(ip_address):
-    interface_status = db["interface_status"].find(
-        {"ip_address": ip_address}
-        ).sort("time", -1).limit(3)
+    interface_status = (
+        db["interface_status"]
+        .find({"ip_address": ip_address})
+        .sort("time", -1)
+        .limit(3)
+    )
     return render_template(
         "router_detail.html",
         ip_address=ip_address,
-        interface_status=list(interface_status))
+        interface_status=list(interface_status),
+    )
 
 
 @app.route("/delete/<id>", methods=["POST"])
