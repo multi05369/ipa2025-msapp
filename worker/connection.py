@@ -1,10 +1,9 @@
-import os
 import netmiko
-import ntc_templates
 from dotenv import load_dotenv
 load_dotenv()
 
-def connection(ip : str, username : str, password : str):
+
+def connection(ip: str, username: str, password: str):
     '''Connect to Cisco router via Netmiko'''
     device = {
         'device_type': 'cisco_ios',

@@ -1,6 +1,7 @@
 import os
 from pymongo import MongoClient
 
+
 def set_router_info(router_info):
     client = MongoClient(os.getenv("MONGO_URI"))
     db = client["ipa2025"]
