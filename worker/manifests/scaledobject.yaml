@@ -18,5 +18,3 @@ spec:
         value: "10"
         protocol: amqp
         hostFromEnv: RABBITMQ_URL 
-        usernameFromEnv: RABBITMQ_DEFAULT_USER
-        passwordFromEnv: RABBITMQ_DEFAULT_PASS
