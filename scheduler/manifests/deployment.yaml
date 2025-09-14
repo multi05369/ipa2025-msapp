@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: ipa2025-msapp-scheduler
-          image: taikie/scheduler:v1.0.0
+          image: taikie/scheduler:v1.0.1
           envFrom:
             - secretRef:
                 name: "ipa2025-secret"
