@@ -44,7 +44,7 @@ def main():
         try:
             connection = pika.BlockingConnection(
                 pika.ConnectionParameters(
-                    host="rabbitmq", port=5672, credentials=credentials
+                    host="172.16.1.135", port=5672, credentials=credentials
                 )
             )
             break
